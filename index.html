@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Los Sopranos</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="icon" href="img/pato.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <!-- ===== NAVEGACIÓN ===== -->
+  <header class="barra">
+     <div class="barra-interna">
+    <a href="index.html" class="logo">
+       <img src="img/logo.png" alt="Los Soprano">
+    </a>
+    <button class="hamburguesa" id="btnMenu" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+   </button>
+    <nav class="nav">
+      <ul class="nav-lista">
+
+        <li class="nav-item">
+          <a href="temporadas.html" class="nav-link">Temporadas</a>
+          <ul class="submenu">
+            <li><a href="temporada.html?t=1">Temporada 1</a></li>
+            <li><a href="temporada.html?t=2">Temporada 2</a></li>
+            <li><a href="temporada.html?t=3">Temporada 3</a></li>
+            <li><a href="temporada.html?t=4">Temporada 4</a></li>
+            <li><a href="temporada.html?t=5">Temporada 5</a></li>
+            <li><a href="temporada.html?t=6">Temporada 6</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="personajes.html" class="nav-link">Personajes</a>
+          <ul class="submenu">
+            <li><a href="personajes.html#familia">La familia Soprano</a></li>
+            <li><a href="personajes.html#organizacion">La organización</a></li>
+            <li><a href="personajes.html#otros">Otros</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="merch.html" class="nav-link">Merch</a>
+        </li>
+
+<li class="nav-item">
+  <a href="contacto.html" class="nav-link">Contacto</a>
+</li> 
+
+        
+
+      </ul>
+    </nav>
+    </div>
+  </header>
+
+  <!-- ===== PORTADA ===== -->
+  <main class="portada">
+    <img src="img/fondo/banner.jpg" alt="" class="portada-fondo">
+
+    <div class="portada-texto">
+      <h1>Los <br>Sopranos</h1>
+      <p class="portada-datos">1999 – 2007 · HBO · 6 temporadas · 86 episodios</p>
+      <p class="portada-descripcion">
+        Una mirada con humor negro, y a veces conmovedora, a una familia de los
+        suburbios de Nueva Jersey cuyo patriarca es un capo de la mafia (LCN).
+      </p>
+      <a href="temporadas.html" class="btn">Ver T1 E1</a>
+    </div>
+  </main>
+  
+    
+
+  <!-- ===== PIE ===== -->
+  <footer class="pie">
+    <div class="pie-redes">
+
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+
+      <a href="#" aria-label="X">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.9 2H22l-6.8 7.8L23 22h-6.3l-4.9-6.4L6.1 22H3l7.3-8.3L2 2h6.4l4.4 5.8L18.9 2zm-1.1 18h1.7L7.3 3.8H5.5L17.8 20z"/>
+        </svg>
+      </a>
+
+      <a href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0022 12z"/>
+        </svg>
+      </a>
+
+      <a href="#" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23 12s0-3.4-.4-5c-.3-.9-1-1.6-1.9-1.9C19 4.7 12 4.7 12 4.7s-7 0-8.7.4c-.9.3-1.6 1-1.9 1.9C1 8.6 1 12 1 12s0 3.4.4 5c.3.9 1 1.6 1.9 1.9 1.7.4 8.7.4 8.7.4s7 0 8.7-.4c.9-.3 1.6-1 1.9-1.9.4-1.6.4-5 .4-5zM9.8 15.3V8.7l5.8 3.3-5.8 3.3z"/>
+        </svg>
+      </a>
+
+      <a aria-label="Spotify" href="https://open.spotify.com/playlist/7GrrlPeLnO2lFECkvw19rW?si=4fe7040796dd4552" target="_blank" rel="noopener">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.28c-.24.36-.66.48-1.02.24-2.82-1.74-6.36-2.1-10.56-1.14-.42.12-.78-.18-.9-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.3 1.02zm1.44-3.3c-.3.42-.84.6-1.26.3-3.24-1.98-8.16-2.58-11.94-1.38-.48.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14 4.38-1.32 9.78-.66 13.5 1.62.36.18.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.1 9.3c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.32-1.26 11.34-1.02 15.78 1.62.54.3.72 1.02.42 1.56-.3.42-1.02.6-1.56.24z"/></svg>
+      </a>
+
+    </div>
+
+    <p class="pie-texto">www.bada-bing.com</p>
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

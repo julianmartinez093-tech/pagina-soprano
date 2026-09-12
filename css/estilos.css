@@ -1,0 +1,1054 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Inter:wght@400;500;600&display=swap');
+
+/* ===== VARIABLES ===== */
+:root {
+  --negro:       #0f0f10;
+  --carbon:      #191a1c;
+  --gris:        #2a2c2f;
+  --texto:       #e8e6e3;
+  --texto-tenue: #9d9a95;
+  --bordo:       #7d1a1a;
+  --bordo-claro: #a32626;
+  --rojo-logo:   #c8102e;
+  --radio: 4px;
+}
+
+/* ===== RESET ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: var(--negro);
+  color: var(--texto);
+  font-family: 'Inter', Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;  
+}
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+
+:focus-visible {
+  outline: 2px solid var(--bordo-claro);
+  outline-offset: 3px;
+}
+
+/* ===== BARRA / NAV ===== */
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--carbon);
+  border-bottom: 1px solid var(--gris);
+}
+
+.barra-interna {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  height: 110px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo img {
+  width: 350px;
+  height: auto;
+  filter: invert(1);
+  position: relative;
+  left: -125px;
+  top: 40px;
+  transition: transform .3s ease, filter .3s ease;
+  flex-shrink: 0;
+}
+
+.logo:hover img {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.hamburguesa {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburguesa span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--texto);
+  transition: transform .25s, opacity .25s;
+}
+
+.hamburguesa.activo span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburguesa.activo span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburguesa.activo span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav { margin-left: auto;
+      
+}
+
+.nav-lista { display: flex; }
+
+.nav-item { position: relative; }
+
+.nav-link {
+  display: block;
+  padding: 0 28px;
+  line-height: 109px;
+  font-size: 1.05rem;
+  color: var(--texto-tenue);
+  transition: color .2s;
+}
+
+.nav-item:last-child .nav-link {
+  padding-right: 0;
+}
+
+.nav-item:hover .nav-link { color: var(--texto); }
+
+/* ===== SUBMENÚ DESPLEGABLE ===== */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 190px;
+  background-color: var(--carbon);
+  border: 1px solid var(--gris);
+  border-radius: 0 0 var(--radio) var(--radio);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .18s, transform .18s, visibility .18s;
+}
+
+.nav-item:hover .submenu,
+.nav-item:focus-within .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.submenu a {
+  display: block;
+  padding: 10px 18px;
+  font-size: .88rem;
+  color: var(--texto-tenue);
+  border-left: 2px solid transparent;
+  transition: background-color .15s, color .15s, border-color .15s;
+}
+
+.submenu a:hover {
+  background-color: var(--gris);
+  color: var(--texto);
+  border-left-color: var(--bordo-claro);
+}
+
+/* ===== PORTADA ===== */
+.portada {
+  position: relative;
+  min-height: calc(100vh - 110px);
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.portada-fondo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 72% 20%;
+  z-index: -2;
+}
+
+.portada::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(15,15,16,.95) 0%, rgba(15,15,16,.55) 60%, transparent 100%),
+    linear-gradient(to top, var(--negro) 0%, transparent 45%);
+  z-index: -1;
+}
+
+.portada-texto {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  width: 100%;
+  position: relative;
+  top: -40px;
+}
+
+.portada-texto h1,
+.portada-datos,
+.portada-descripcion {
+  max-width: 640px;
+}
+
+.portada-texto h1 {
+  font-family: 'Big Shoulders Display', Impact, sans-serif;
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 800;
+  line-height: .95;
+  letter-spacing: -1px;
+  color: var(--rojo-logo);
+  margin-bottom: 16px;
+}
+
+.portada-datos {
+  font-size: .88rem;
+  letter-spacing: .3px;
+  color: var(--texto-tenue);
+  margin-bottom: 20px;
+}
+
+.portada-descripcion {
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+}
+
+/* ===== BOTÓN ===== */
+.btn {
+  display: inline-block;
+  padding: 14px 120px;
+  background-color: var(--bordo);
+  color: var(--texto);
+  border: none;
+  border-radius: var(--radio);
+  font-family: inherit;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .2s;
+}
+
+.btn:hover { background-color: var(--bordo-claro); }
+
+/* ===== PIE ===== */
+.pie {
+  padding: 24px 60px;
+  text-align: center;
+  border-top: 1px solid var(--gris);
+  background-color: var(--carbon);
+}
+
+.pie-redes {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 10px;
+}
+
+.pie-redes a {
+  color: var(--texto-tenue);
+  transition: color .2s, transform .2s;
+}
+
+.pie-redes a:hover {
+  color: var(--bordo-claro);
+  transform: translateY(-2px);
+}
+
+.pie-redes svg {
+  width: 24px;
+  height: 24px;
+}
+
+.pie-texto {
+  font-size: .82rem;
+  color: var(--texto-tenue);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 800px) {
+
+  .barra-interna {
+  padding: 0 22px;
+  height: 68px;
+  }
+
+    .logo img {
+    width: 200px;
+    height: auto;
+    padding-top: 40px;
+    position: static;
+    margin-left: -45px;
+  }
+
+    .hamburguesa {
+    display: flex;
+    position: relative;
+    z-index: 100;
+  }
+
+    .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: 220px;
+    margin-left: 0;
+    padding-top: 80px;
+    background-color: var(--carbon);
+    border-left: 1px solid var(--gris);
+    max-height: none;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    z-index: 90;
+  }
+
+  .nav.abierto {
+    transform: translateX(0);
+  }
+
+
+  .nav-lista {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-link {
+    line-height: normal;
+    padding: 14px 24px;
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  .submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    border: none;
+    border-left: 2px solid var(--gris);
+    margin-left: 10px;
+    display: none;
+  }
+    .nav-item {
+    border-bottom: 1px solid var(--gris);
+  }
+
+  .nav-item.abierto .submenu { display: block; }
+
+  .pie-redes svg {
+  width: 19px;
+  height: 19px;
+  }
+
+  .pie-redes {
+  gap: 26px;
+  margin-bottom: 6px;
+  }
+
+  .pie-texto {
+  font-size: .75rem;
+  }  
+
+  .pie { 
+    padding: 24px 22px;
+    line-height: 1.2;
+   }
+
+  .portada {
+    min-height: auto;
+    padding: 180px 0 40px;
+  }
+
+  .portada-texto h1 { margin-bottom: 8px; }
+
+  .portada-texto { 
+    padding: 0 22px;
+    margin-bottom: 10px;
+   }
+
+  .portada-descripcion { 
+    font-size: .75rem; 
+    margin-bottom: 16px;
+  }
+
+  .portada-datos { font-size: .6rem; }  
+
+  .portada-fondo { object-position: center 8%; }
+
+  .portada::after {
+  background: linear-gradient(to top, var(--negro) 0%, 
+  rgba(15,15,16,.9) 35%, rgba(15,15,16,.35) 
+  75%, rgba(15,15,16,.55) 100%);
+}
+
+
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+
+/* =========================================
+   PÁGINA: TEMPORADAS (Nuevo)
+========================================= */
+
+.pagina-interna {
+  padding: 60px 48px;
+  flex: 1; 
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.titulo-seccion {
+  font-family: 'Big Shoulders Display', Impact, sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: var(--rojo-logo);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.subtitulo-seccion {
+  font-size: 1.1rem;
+  color: var(--texto-tenue);
+  margin-bottom: 50px;
+}
+
+.lista-temporadas {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.temporada-card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--carbon);
+  border: 1px solid var(--gris);
+  border-radius: var(--radio);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.temporada-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  border-color: var(--bordo-claro);
+}
+
+.temporada-img-contenedor {
+  flex: 0 0 250px;
+  background-color: var(--negro);
+}
+.temporada-img-contenedor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.temporada-info {
+  flex: 1 1 300px;
+  min-width: 0;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.temporada-info h2 {
+  font-family: 'Big Shoulders Display', Impact, sans-serif;
+  font-size: 2.2rem;
+  color: var(--texto);
+  margin-bottom: 5px;
+  line-height: 1;
+}
+
+.temporada-meta {
+  font-size: 0.9rem;
+  color: var(--texto-tenue);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.temporada-meta span {
+  color: var(--bordo-claro);
+  font-weight: 600;
+}
+
+.temporada-info p {
+  color: var(--texto);
+  margin-bottom: 25px;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.link-episodios {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  color: var(--bordo-claro);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.link-episodios::after {
+  content: '→';
+  margin-left: 8px;
+  transition: transform 0.2s;
+}
+
+.link-episodios:hover {
+  color: var(--rojo-logo);
+}
+
+.link-episodios:hover::after {
+  transform: translateX(5px);
+}
+
+.episodios-preview {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 0 30px;
+  background-color: var(--negro);
+  transition: max-height .35s ease, padding .35s ease;
+}
+
+.temporada-card:hover .episodios-preview {
+  max-height: 800px;
+  padding: 20px 30px;
+}
+
+.mini-episodio {
+  width: 130px;
+  transition: transform .2s;
+}
+
+.mini-episodio img {
+  width: 100%;
+  height: 74px;
+  object-fit: cover;
+  border-radius: 3px;
+  margin-bottom: 6px;
+  filter: grayscale(.5) brightness(.75);
+  transition: filter .25s;
+}
+
+.mini-episodio span {
+  display: block;
+  font-size: .75rem;
+  line-height: 1.3;
+  color: var(--texto-tenue);
+}
+
+.mini-episodio:hover {
+  transform: translateY(-4px);
+}
+
+.mini-episodio:hover img {
+  filter: grayscale(0) brightness(1);
+}
+
+.mini-episodio:hover span {
+  color: var(--texto);
+}
+
+
+
+
+
+
+/* --- Responsive Exclusivo para Temporadas --- */
+@media (max-width: 800px) {
+  .pagina-interna {
+    padding: 40px 22px;
+  }
+
+  .temporada-card {
+    flex-direction: column;
+  }
+
+  .temporada-img-contenedor {
+    flex: auto;
+    height: 250px; 
+  }
+
+  .temporada-info {
+  padding: 20px;
+}
+
+  .temporada-info h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* =========================================
+   PÁGINA: CONTACTO
+========================================= */
+
+.contenedor-contacto {
+  max-width: 1200px; /* Hacemos el contenedor un poco más angosto para el formulario */
+}
+
+.contacto-info {
+ 
+  margin-bottom: 40px;
+}
+
+.contacto-info .subtitulo-seccion {
+  margin-bottom: 20px;
+}
+
+.formulario-contacto {
+  background-color: var(--carbon);
+  padding: 40px;
+  border: 1px solid var(--gris);
+  border-radius: var(--radio);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form-grupo {
+  margin-bottom: 25px;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--texto);
+  font-size: 0.95rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--negro);
+  border: 1px solid var(--gris);
+  border-radius: var(--radio);
+  color: var(--texto);
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input::placeholder {
+  color: var(--texto-tenue);
+  opacity: 0.6;
+}
+
+/* Cambia el color del borde cuando haces clic para escribir */
+.form-input:focus {
+  outline: none;
+  border-color: var(--bordo-claro);
+  box-shadow: 0 0 0 2px rgba(163, 38, 38, 0.2);
+}
+
+/* Estilo especial para el campo de selección (select) */
+select.form-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%239d9a95%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px auto;
+  cursor: pointer;
+}
+
+.form-input[type="text"],
+.form-input[type="email"] {
+  height: 50px;
+}
+
+.btn-contacto {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.contacto-grid {
+  display: flex;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.formulario-contacto {
+  flex: 1 1 460px;
+  min-width: 0;
+}
+
+.contacto-imagen {
+  flex: 1 1 380px;
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.contacto-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .contacto-grid {
+    flex-direction: column;
+  }
+
+  .contacto-imagen {
+    height: 260px;
+  }
+}
+
+/* --- Responsive Exclusivo para Contacto --- */
+@media (max-width: 800px) {
+  .formulario-contacto {
+    padding: 25px 20px;
+  }
+}
+
+/* =========================================
+   PÁGINA: PERSONAJES (Corregido)
+========================================= */
+
+.seccion-grupo {
+  margin-bottom: 50px;
+}
+
+.titulo-grupo {
+  font-family: 'Big Shoulders Display', Impact, sans-serif;
+  font-size: 2rem;
+  color: var(--texto);
+  border-bottom: 2px solid var(--gris);
+  padding-bottom: 8px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.grid-personajes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px; 
+}
+
+.personaje-card {
+  background-color: var(--carbon);
+  border: 1px solid var(--gris);
+  border-radius: var(--radio);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.personaje-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  border-color: var(--bordo-claro);
+}
+
+.personaje-img {
+  height: 280px;
+  min-height: 280px;
+  background-color: var(--negro);
+  flex-shrink: 0;
+}
+
+.personaje-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.personaje-info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.personaje-info h3 {
+  font-family: 'Big Shoulders Display', Impact, sans-serif;
+  font-size: 1.8rem;
+  color: var(--texto);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.rol {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--bordo-claro);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.personaje-info p {
+  color: var(--texto-tenue);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* --- Responsive para Personajes --- */
+@media (max-width: 800px) {
+  .grid-personajes {
+    grid-template-columns: 1fr;
+  }
+  
+  .personaje-img {
+    height: 240px;
+    min-height: 240px;
+  }
+}
+
+/* =========================================
+   PÁGINA: EPISODIOS DE UNA TEMPORADA
+========================================= */
+
+.link-volver {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: .9rem;
+  color: var(--texto-tenue);
+  transition: color .2s;
+}
+
+.link-volver::before {
+  content: '← ';
+}
+
+.link-volver:hover {
+  color: var(--bordo-claro);
+}
+
+.lista-episodios {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.episodio-card {
+  display: flex;
+  background-color: var(--carbon);
+  border: 1px solid var(--gris);
+  border-radius: var(--radio);
+  overflow: hidden;
+  transition: border-color .2s, transform .2s;
+}
+
+.episodio-card:hover {
+  border-color: var(--bordo-claro);
+  transform: translateX(4px);
+}
+
+.episodio-img {
+  flex: 0 0 200px;
+  background-color: var(--negro);
+}
+
+.episodio-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.episodio-info {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.episodio-num {
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--bordo-claro);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.episodio-info h3 {
+  font-family: 'Big Shoulders Display', Impact, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--texto);
+  margin-bottom: 10px;
+}
+
+.episodio-info p {
+  font-size: .95rem;
+  color: var(--texto-tenue);
+  line-height: 1.6;
+}
+
+.aviso-vacio {
+  color: var(--texto-tenue);
+  font-style: italic;
+  padding: 40px 0;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .episodio-card {
+    flex-direction: column;
+  }
+
+  .episodio-img {
+    flex: auto;
+    height: 180px;
+  }
+
+  .episodio-info {
+    padding: 16px 18px;
+  }
+
+  .episodio-info h3 {
+    font-size: 1.4rem;
+  }
+}
+
+/* =========================================
+   PÁGINA: MERCH
+========================================= */
+
+.grid-merch {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 26px;
+}
+
+.producto-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--carbon);
+  border: 1px solid var(--gris);
+  border-radius: var(--radio);
+  overflow: hidden;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--bordo-claro);
+  box-shadow: 0 10px 20px rgba(0,0,0,.4);
+}
+
+.producto-img {
+  height: 240px;
+  background-color: var(--negro);
+  overflow: hidden;
+}
+
+.producto-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s;
+}
+
+.producto-card:hover .producto-img img {
+  transform: scale(1.06);
+}
+
+.producto-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.producto-info h3 {
+  font-family: 'Big Shoulders Display', Impact, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  color: var(--texto);
+  margin-bottom: 8px;
+}
+
+.producto-desc {
+  font-size: .88rem;
+  color: var(--texto-tenue);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.producto-pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.producto-precio {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.btn-comprar {
+  padding: 9px 20px;
+  background-color: var(--bordo);
+  color: var(--texto);
+  border: none;
+  border-radius: var(--radio);
+  font-family: inherit;
+  font-size: .88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .2s;
+}
+
+.btn-comprar:hover {
+  background-color: var(--bordo-claro);
+}
+
+@media (max-width: 800px) {
+  .grid-merch {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .producto-img {
+    height: 220px;
+  }
+}
+
