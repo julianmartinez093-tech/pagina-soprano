@@ -1052,3 +1052,40 @@ select.form-input {
   }
 }
 
+/* =========================================
+   PÁGINA: GALERÍA
+========================================= */
+
+.grid-galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.grid-galeria a {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radio);
+  border: 1px solid var(--gris);
+}
+
+.grid-galeria img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(.4) brightness(.85);
+  transition: transform .35s, filter .35s;
+}
+
+.grid-galeria a:hover img {
+  transform: scale(1.06);
+  filter: grayscale(0) brightness(1);
+}
+
+@media (max-width: 800px) {
+  .grid-galeria {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+}
